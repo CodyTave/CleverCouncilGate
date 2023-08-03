@@ -5,15 +5,15 @@ export default {
     extend: {
       colors: {
         aca: ["#109CD7", "#1187B9", "#F1FBFF "],
-        com: ["#CF4187", "B02D6E", "#FDF5F9 "],
-        tech: ["#C6A180", "#FFF9F4"],
+        tech: ["#CF4187", "#B02D6E", "#FDF5F9"],
+        com: ["#C6A180", "#FFF9F4"],
         light: ["#F9F9FC"],
         dark: ["#141419 "],
       },
       backgroundColor: {
         aca: ["#109CD7", "#1187B9", "#F1FBFF "],
-        com: ["#CF4187", "B02D6E", "#FDF5F9 "],
-        tech: ["#C6A180", "#FFF9F4"],
+        tech: ["#CF4187", "#B02D6E", "#FDF5F9 "],
+        com: ["#C6A180", "#FFF9F4"],
         light: ["F9F9FC"],
         dark: ["#141419 "],
       },
