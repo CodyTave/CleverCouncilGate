@@ -1,7 +1,6 @@
 import "./App.css";
 import { mfAca, mfCom, mfTech } from "./assets";
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 function App() {
   const Clevers = [
     {
@@ -36,7 +35,7 @@ function App() {
   const [selectedClever, setClever] = useState(Clevers[1]);
   return (
     <div className={`w-screen h-screen ${selectedClever.bg} transall`}>
-      <div className="flex gap-16 h-full justify-center items-center  transall">
+      <div className="flex gap-14 h-full justify-center items-center  transall">
         {Clevers.map((clev) => (
           <img
             onClick={() => setClever(clev)}
@@ -49,31 +48,21 @@ function App() {
           />
         ))}
         <h1
-          className={`text-9xl font-extrabold ${selectedClever.text} absolute bottom-32 left-32 tracking-widest`}
+          className={`text-9xl font-extrabold transall ${selectedClever.text} absolute bottom-32 left-32 tracking-widest`}
         >
           CLEVER
         </h1>
-        <AnimatePresence>
-          <div
-            className={`text-9xl font-extrabold absolute top-28
-           ${selectedClever.stroke} right-28 tracking-wider transall
+
+        <div
+          className={`text-9xl font-extrabold absolute top-28 z-50
+            right-28 tracking-wider transall 
           overflow-hidden 
           `}
-          >
-            <motion.h1
-              className=""
-              initial={{ translateY: "0%" }}
-              animate={{ translateY: "-100%" }}
-              exit={{ translateY: "-100%" }}
-              transition={{
-                duration: 1.4,
-                ease: "cubic-bezier(0.11, 0, 0.5, 0)",
-              }}
-            >
-              {selectedClever.title}
-            </motion.h1>
-          </div>
-        </AnimatePresence>
+        >
+          <h1 className={` ${selectedClever.stroke}  `}>
+            {selectedClever.title}
+          </h1>
+        </div>
       </div>
     </div>
   );
