@@ -35,28 +35,36 @@ function App() {
   const [selectedClever, setClever] = useState(Clevers[1]);
   return (
     <div className={`w-screen h-screen ${selectedClever.bg} transall`}>
-      <div className="flex gap-14 h-full justify-center items-center  transall">
+      <div className="flex xl:gap-14 h-full justify-center items-center  transall">
         {Clevers.map((clev) => (
           <img
             onClick={() => setClever(clev)}
-            className={`transall cursor-pointer  ${selectedClever.position} ${
+            className={`transall cursor-pointer relative w-auto max-w-[60%] ${
+              selectedClever.position
+            } ${
               selectedClever.id !== clev.id
-                ? "filter grayscale blur-sm scale-75 "
+                ? " grayscale blur-sm scale-75 "
                 : "scale-100"
             }`}
             src={clev.image}
           />
         ))}
         <h1
-          className={`text-9xl font-extrabold transall ${selectedClever.text} absolute bottom-32 left-32 tracking-widest`}
+          className={`
+          font-extrabold transall ${selectedClever.text} absolute tracking-widest
+          xl:text-9xl  mmd:text-8xl sm:text-5xl xxs:text-5xl text-3xl
+           sm:bottom-32 bottom-1/4
+            sm:left-32 xxs:left-10
+            `}
         >
           CLEVER
         </h1>
 
         <div
-          className={`text-9xl font-extrabold absolute top-28 z-50
-            right-28 tracking-wider transall 
-          overflow-hidden 
+          className={`xl:text-9xl  mmd:text-8xl sm:text-5xl xxs:text-5xl text-3xl z-50
+          absolute tracking-wider transall font-extrabold overflow-hidden 
+          sm:top-28 top-1/4
+          sm:right-28 xxs:right-10
           `}
         >
           <h1 className={` ${selectedClever.stroke}  `}>
