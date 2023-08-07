@@ -38,6 +38,7 @@ function App() {
       <div className="flex xl:gap-14 h-full justify-center items-center  transall">
         {Clevers.map((clev) => (
           <img
+            key={clev.id}
             onClick={() => setClever(clev)}
             className={`transall cursor-pointer relative w-auto max-w-[60%] ${
               selectedClever.position
