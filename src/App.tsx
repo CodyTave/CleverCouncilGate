@@ -1,6 +1,7 @@
 import "./App.css";
 import { mfAca, mfCom, mfTech } from "./assets";
 import { useState } from "react";
+import Title from "./components/Title";
 function App() {
   const Clevers = [
     {
@@ -40,37 +41,35 @@ function App() {
           <img
             key={clev.id}
             onClick={() => setClever(clev)}
-            className={`transall cursor-pointer relative w-auto max-w-[60%] ${
+            className={`transall  relative w-auto max-w-[60%] ${
               selectedClever.position
             } ${
               selectedClever.id !== clev.id
-                ? " grayscale blur-sm scale-75 "
+                ? " grayscale blur-[3px] scale-75 hover:blur-0 hover:grayscale-0 "
                 : "scale-100"
             }`}
             src={clev.image}
           />
         ))}
-        <h1
+        <div
           className={`
           font-extrabold transall ${selectedClever.text} absolute tracking-widest
-          xl:text-9xl  mmd:text-8xl sm:text-5xl xxs:text-5xl text-3xl
-           sm:bottom-32 bottom-1/4
-            sm:left-32 xxs:left-10
+          xl:text-9xl  mmd:text-8xl sm:text-5xl xxs:text-3xl tn:text-xl text-sm truncate
+         lg:bottom-28 md:bottom-[20%] mmd:bottom-[18%] sm:bottom-[34%] msm:bottom-[38%] xxs:bottom-[41%] tn:bottom-[43%] bottom-[46%]
+         lg:left-48 md:left-36 mmd:left-24 sm:left-20 msm:left-20 xxs:left-10 tn:left-5 left-3
             `}
         >
           CLEVER
-        </h1>
+        </div>
 
         <div
-          className={`xl:text-9xl  mmd:text-8xl sm:text-5xl xxs:text-5xl text-3xl z-50
-          absolute tracking-wider transall font-extrabold overflow-hidden 
-          sm:top-28 top-1/4
-          sm:right-28 xxs:right-10
+          className={`xl:text-9xl  mmd:text-8xl sm:text-5xl xxs:text-3xl tn:text-xl text-sm z-50
+          absolute tracking-wider transall font-extrabold overflow-hidden truncate
+         lg:top-28 md:top-[20%] mmd:top-[18%] sm:top-[34%] msm:top-[38%] xxs:top-[41%] tn:top-[43%] top-[46%]
+         lg:right-48 md:right-36 mmd:right-20 sm:right-28 msm:right-20 xxs:right-10 tn:right-5 right-3
           `}
         >
-          <h1 className={` ${selectedClever.stroke}  `}>
-            {selectedClever.title}
-          </h1>
+          <Title Style={selectedClever.stroke} prtitle={selectedClever.title} />
         </div>
       </div>
     </div>

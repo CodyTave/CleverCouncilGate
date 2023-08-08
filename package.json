@@ -1,5 +1,5 @@
 {
-  "name": "naturopathie-experts",
+  "name": "clever-gate",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "framer-motion": "^10.15.0",
-    "gsap": "^3.12.1",
+    "gsap": "^3.12.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
