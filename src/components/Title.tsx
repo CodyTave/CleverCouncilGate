@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 
 interface props {
   prtitle: string;
-  Style: string;
 }
 function Title({ prtitle }: props) {
   const [prev, setPrev] = useState(prtitle);
@@ -79,13 +78,25 @@ function Title({ prtitle }: props) {
 
   return (
     <>
-      <div className={`com -translate-y-full text-right stroke-com `}>
+      <div
+        className={`com -translate-y-full text-right text-com-0
+         ${prtitle === "COM & EVENTS" && "shadow-text"}
+          pr-3 tracking-widest `}
+      >
         COM & EVENTS
       </div>
-      <div className={`aca  text-right -translate-y-[200%] stroke-aca `}>
+      <div
+        className={`aca  text-right -translate-y-[200%]
+        ${prtitle === "ACADEMY" && "shadow-text"}
+        text-aca-0  pr-3 tracking-widest`}
+      >
         ACADEMY
       </div>
-      <div className={`tech  text-right -translate-y-[300%] stroke-tech  `}>
+      <div
+        className={`tech  text-right -translate-y-[300%]
+        ${prtitle === "TECH SERVICES" && "shadow-text"}
+         text-tech-0  pr-3 tracking-widest `}
+      >
         TECH SERVICES
       </div>
     </>

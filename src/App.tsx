@@ -1,66 +1,9 @@
 import "./App.css";
-import { aca, com, mfAca, mfCom, mfTech, tech } from "./assets";
 import { useState } from "react";
 import Title from "./components/Title";
 import { AnimatePresence, motion } from "framer-motion";
+import { Clevers } from "./constants/constants";
 function App() {
-  const Clevers = [
-    {
-      id: "com",
-      title: "COM & EVENTS",
-      position: "translate-x-full",
-      image: mfCom,
-      logo: com,
-      bg: "bg-com-2",
-      stroke: "stroke-com",
-      text: "text-com-0",
-      color: "bg-com-0",
-      svg: "#C6A180",
-      links: [
-        { id: "ws", title: "VISITER", url: "" },
-        { id: "fb", title: "FACEBOOK", url: "" },
-        { id: "ig", title: "INSTAGRAM", url: "" },
-        { id: "ln", title: "LINKEDIN", url: "" },
-      ],
-    },
-    {
-      id: "academy",
-      title: "ACADEMY",
-      position: "",
-      image: mfAca,
-      logo: aca,
-      bg: "bg-aca-2",
-      stroke: "stroke-aca",
-      text: "text-aca-1",
-      color: "bg-aca-1",
-      svg: "#109CD7",
-      links: [
-        { id: "ws", title: "VISITER", url: "" },
-        { id: "fb", title: "FACEBOOK", url: "" },
-        { id: "ig", title: "INSTAGRAM", url: "" },
-        { id: "ln", title: "LINKEDIN", url: "" },
-      ],
-    },
-    {
-      id: "tech",
-      title: "TECH SERVICES",
-      position: "-translate-x-full",
-      image: mfTech,
-      logo: tech,
-      bg: "bg-tech-2",
-      stroke: "stroke-tech",
-      text: "text-tech-1",
-      color: "bg-tech-1",
-      svg: "#B02D6E",
-      links: [
-        { id: "ws", title: "VISITER", url: "" },
-        { id: "fb", title: "FACEBOOK", url: "" },
-        { id: "ig", title: "INSTAGRAM", url: "" },
-        { id: "ln", title: "LINKEDIN", url: "" },
-      ],
-    },
-  ];
-
   const [selectedClever, setClever] = useState(Clevers[1]);
   return (
     <div className={`w-screen h-screen ${selectedClever.bg} transall`}>
@@ -93,9 +36,9 @@ function App() {
           <img
             key={clev.id}
             onClick={() => setClever(clev)}
-            className={`transall  relative w-auto max-w-[60%] ${
-              selectedClever.position
-            } ${
+            className={`transall  relative w-auto max-w-[60%]
+            xs:h-auto h-1/2 object-cover 
+            ${selectedClever.position} ${
               selectedClever.id !== clev.id
                 ? " grayscale blur-[3px] scale-75 hover:blur-0 hover:grayscale-0 "
                 : "scale-100"
@@ -107,8 +50,8 @@ function App() {
           className={`
           font-extrabold transall ${selectedClever.text} absolute tracking-widest
           xl:text-9xl  mmd:text-8xl sm:text-5xl xxs:text-3xl tn:text-xl text-sm truncate
-         xl:bottom-48 lg:bottom-28 md:bottom-[20%] mmd:bottom-[18%] sm:bottom-[34%] msm:bottom-[38%] xxs:bottom-[41%] tn:bottom-[43%] bottom-[46%]
-         xl:left-60 lg:left-48 md:left-36 mmd:left-24 sm:left-20 msm:left-20 xxs:left-10 tn:left-5 left-3
+         xl:bottom-48 lg:bottom-28 md:bottom-[20%] mmd:bottom-[18%] sm:bottom-[34%] msm:bottom-[38%] xxs:bottom-[27%] tn:bottom-[25%] bottom-[46%]
+         xl:left-60 lg:left-48 md:left-36 mmd:left-24 sm:left-20 msm:left-20 xxs:left-10 tn:left-10 left-3
             `}
         >
           CLEVER
@@ -117,14 +60,14 @@ function App() {
         <div
           className={`xl:text-9xl  mmd:text-8xl sm:text-5xl xxs:text-3xl tn:text-xl text-sm z-50
           absolute tracking-wider transall font-extrabold overflow-hidden truncate
-         xl:top-48 lg:top-28 md:top-[20%] mmd:top-[18%] sm:top-[34%] msm:top-[38%] xxs:top-[41%] tn:top-[43%] top-[46%]
+         xl:top-48 lg:top-28 md:top-[20%] mmd:top-[18%] sm:top-[34%] msm:top-[38%] xxs:top-[27%] tn:top-[25%] top-[46%]
          lg:right-48 md:right-36 mmd:right-20 sm:right-28 msm:right-20 xxs:right-10 tn:right-5 right-3
           `}
         >
-          <Title Style={selectedClever.stroke} prtitle={selectedClever.title} />
+          <Title prtitle={selectedClever.title} />
         </div>
       </div>
-      <div className="absolute bottom-10 xxs:left-10 left-1 flex gap-2">
+      <div className="absolute bottom-10 xxs:left-10 left-1 flex text-left gap-2">
         {selectedClever.links.map((link) => (
           <a
             target="__blank"
