@@ -1,5 +1,5 @@
 import "./App.css";
-import { aca, arrow, com, mfAca, mfCom, mfTech, tech } from "./assets";
+import { aca, com, mfAca, mfCom, mfTech, tech } from "./assets";
 import { useState } from "react";
 import Title from "./components/Title";
 import { AnimatePresence, motion } from "framer-motion";
