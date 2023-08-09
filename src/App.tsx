@@ -1,5 +1,5 @@
 import "./App.css";
-import { aca, com, mfAca, mfCom, mfTech, tech } from "./assets";
+import { aca, arrow, com, mfAca, mfCom, mfTech, tech } from "./assets";
 import { useState } from "react";
 import Title from "./components/Title";
 import { AnimatePresence, motion } from "framer-motion";
@@ -15,6 +15,13 @@ function App() {
       stroke: "stroke-com",
       text: "text-com-0",
       color: "bg-com-0",
+      svg: "#C6A180",
+      links: [
+        { id: "ws", title: "VISITER", url: "" },
+        { id: "fb", title: "FACEBOOK", url: "" },
+        { id: "ig", title: "INSTAGRAM", url: "" },
+        { id: "ln", title: "LINKEDIN", url: "" },
+      ],
     },
     {
       id: "academy",
@@ -26,6 +33,13 @@ function App() {
       stroke: "stroke-aca",
       text: "text-aca-1",
       color: "bg-aca-1",
+      svg: "#109CD7",
+      links: [
+        { id: "ws", title: "VISITER", url: "" },
+        { id: "fb", title: "FACEBOOK", url: "" },
+        { id: "ig", title: "INSTAGRAM", url: "" },
+        { id: "ln", title: "LINKEDIN", url: "" },
+      ],
     },
     {
       id: "tech",
@@ -37,6 +51,13 @@ function App() {
       stroke: "stroke-tech",
       text: "text-tech-1",
       color: "bg-tech-1",
+      svg: "#B02D6E",
+      links: [
+        { id: "ws", title: "VISITER", url: "" },
+        { id: "fb", title: "FACEBOOK", url: "" },
+        { id: "ig", title: "INSTAGRAM", url: "" },
+        { id: "ln", title: "LINKEDIN", url: "" },
+      ],
     },
   ];
 
@@ -102,6 +123,29 @@ function App() {
         >
           <Title Style={selectedClever.stroke} prtitle={selectedClever.title} />
         </div>
+      </div>
+      <div className="absolute bottom-10 xxs:left-10 left-1 flex gap-2">
+        {selectedClever.links.map((link) => (
+          <a
+            target="__blank"
+            href={link.url}
+            key={link.id}
+            className="flex justify-center items-center gap-1 transall"
+          >
+            <span
+              className={`font-bold text-xs ${selectedClever.text} hover:underline cursor-pointer transall`}
+            >
+              {link.title}
+            </span>
+            <svg width="9" height="8" viewBox="0 0 12 11">
+              <path
+                className="transall"
+                fill={selectedClever.svg}
+                d="M9.142 0.603373L3.0821 0.232926L2.96008 2.2289L7.60841 2.51305L0.119065 9.13949L1.44435 10.6374L8.9337 4.01092L8.64954 8.65925L10.6455 8.78127L11.016 2.72136C11.0482 2.19201 10.869 1.67152 10.5175 1.27434C10.1661 0.877159 9.67134 0.635812 9.142 0.603373Z"
+              />
+            </svg>
+          </a>
+        ))}
       </div>
     </div>
   );

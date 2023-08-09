@@ -4,4 +4,5 @@ import tech from "./Tech.svg";
 import mfAca from "./MainFrameAca.png";
 import mfCom from "./MainFrameCom.png";
 import mfTech from "./MainFrameTech.png";
-export { aca, com, tech, mfAca, mfCom, mfTech };
+import arrow from "./arrow.svg";
+export { aca, com, tech, mfAca, mfCom, mfTech, arrow };
