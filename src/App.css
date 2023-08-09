@@ -88,21 +88,21 @@ img {
   color: transparent;
 }
 
-@media (max-width: 175px) {
+@media (max-width: 780px) {
   .stroke-aca {
-    -webkit-text-stroke: 0.5px #1187b9;
+    -webkit-text-stroke: 1px #1187b9;
     color: transparent;
   }
 }
-@media (max-width: 175px) {
+@media (max-width: 780px) {
   .stroke-com {
-    -webkit-text-stroke: 0.5px #c6a180;
+    -webkit-text-stroke: 1px #c6a180;
     color: transparent;
   }
 }
-@media (max-width: 175px) {
+@media (max-width: 780px) {
   .stroke-tech {
-    -webkit-text-stroke: 0.5px #b02d6e;
+    -webkit-text-stroke: 1px #b02d6e;
     color: transparent;
   }
 }
