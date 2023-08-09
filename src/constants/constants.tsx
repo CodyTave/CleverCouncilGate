@@ -24,6 +24,7 @@ export const navLinks: Array<{ id: string; title: string; order: string }> = [
 
 export const Clevers = [
   {
+    index: 0,
     id: "com",
     title: "COM & EVENTS",
     position: "translate-x-full",
@@ -42,6 +43,8 @@ export const Clevers = [
     ],
   },
   {
+    index: 1,
+
     id: "academy",
     title: "ACADEMY",
     position: "",
@@ -60,6 +63,7 @@ export const Clevers = [
     ],
   },
   {
+    index: 2,
     id: "tech",
     title: "TECH SERVICES",
     position: "-translate-x-full",

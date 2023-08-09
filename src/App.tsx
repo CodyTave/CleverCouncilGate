@@ -5,6 +5,38 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Clevers } from "./constants/constants";
 function App() {
   const [selectedClever, setClever] = useState(Clevers[1]);
+  const [dragging, setDragging] = useState<boolean>(false);
+  const [dragStartX, setDragStartX] = useState<number>(0);
+
+  const handleDragStart = (clientX: number) => {
+    setDragging(true);
+    setDragStartX(clientX);
+  };
+
+  const handleDragEnd = (clientX: number) => {
+    if (dragging) {
+      const dragDistance = clientX - dragStartX;
+
+      if (dragDistance < -20 && selectedClever.index < Clevers.length - 1) {
+        console.log("left");
+        setClever(Clevers[selectedClever.index + 1]);
+      } else if (dragDistance > 20 && selectedClever.index > 0) {
+        console.log("right");
+
+        setClever(Clevers[selectedClever.index - 1]);
+      }
+      setDragging(false);
+      setDragStartX(0);
+    }
+  };
+
+  const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    handleDragStart(e.touches[0].clientX);
+  };
+  const handleTouchEnd = (e: React.TouchEvent<HTMLDivElement>) => {
+    handleDragEnd(e.changedTouches[0].clientX);
+  };
   return (
     <div className={`w-screen h-screen ${selectedClever.bg} transall`}>
       <AnimatePresence>
@@ -35,6 +67,8 @@ function App() {
         {Clevers.map((clev) => (
           <img
             key={clev.id}
+            onTouchStart={handleTouchStart}
+            onTouchEnd={handleTouchEnd}
             onClick={() => setClever(clev)}
             className={`transall  relative w-auto max-w-[60%]
             xs:h-auto h-1/2 object-cover 
@@ -58,7 +92,7 @@ function App() {
         </div>
 
         <div
-          className={`xl:text-9xl  mmd:text-8xl sm:text-5xl xxs:text-3xl tn:text-xl text-sm z-50
+          className={`xl:text-9xl  mmd:text-8xl sm:text-5xl xxs:text-3xl tn:text-xl text-sm z-50 h-32
           absolute tracking-wider transall font-extrabold overflow-hidden truncate
          xl:top-48 lg:top-28 md:top-[20%] mmd:top-[18%] sm:top-[34%] msm:top-[38%] xxs:top-[27%] tn:top-[25%] top-[46%]
          lg:right-48 md:right-36 mmd:right-20 sm:right-28 msm:right-20 xxs:right-10 tn:right-5 right-3
