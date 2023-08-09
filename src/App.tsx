@@ -7,22 +7,22 @@ function App() {
   const [selectedClever, setClever] = useState(Clevers[1]);
   const [dragging, setDragging] = useState<boolean>(false);
   const [dragStartX, setDragStartX] = useState<number>(0);
+  const [isAnimating, setAnimating] = useState(false);
 
   const handleDragStart = (clientX: number) => {
-    setDragging(true);
-    setDragStartX(clientX);
+    if (!isAnimating) {
+      setDragging(true);
+      setDragStartX(clientX);
+    }
   };
 
   const handleDragEnd = (clientX: number) => {
-    if (dragging) {
+    if (dragging && !isAnimating) {
       const dragDistance = clientX - dragStartX;
 
       if (dragDistance < -20 && selectedClever.index < Clevers.length - 1) {
-        console.log("left");
         setClever(Clevers[selectedClever.index + 1]);
       } else if (dragDistance > 20 && selectedClever.index > 0) {
-        console.log("right");
-
         setClever(Clevers[selectedClever.index - 1]);
       }
       setDragging(false);
@@ -46,16 +46,20 @@ function App() {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.8, ease: [0.215, 0.61, 0.355, 1] }}
-          className="absolute sm:top-20 sm:left-28 top-10 left-10 w-20 sm:w-36 transall"
+          className="absolute sm:top-20 sm:left-28 top-10 left-10 w-32 sm:w-36 transall"
           src={selectedClever.logo}
         />
       </AnimatePresence>
       <div className="absolute transall md:right-1/2 sm:top-20  sm:right-28 sm:-translate-x-1/2 top-8 right-10 flex gap-3 items-center ">
         {Clevers.map((clev) => (
           <div
-            onClick={() => setClever(clev)}
+            onClick={() => {
+              if (!isAnimating) {
+                setClever(clev);
+              }
+            }}
             key={clev.id}
-            className={` transall w-[1px] cursor-pointer ${
+            className={` transall w-[2px] rounded-xl cursor-pointer ${
               selectedClever.id === clev.id
                 ? `h-10 ${clev.color}`
                 : "h-7 bg-[#2F3165]"
@@ -69,7 +73,11 @@ function App() {
             key={clev.id}
             onTouchStart={handleTouchStart}
             onTouchEnd={handleTouchEnd}
-            onClick={() => setClever(clev)}
+            onClick={() => {
+              if (!isAnimating) {
+                setClever(clev);
+              }
+            }}
             className={`transall  relative w-auto max-w-[60%]
             xs:h-auto h-1/2 object-cover 
             ${selectedClever.position} ${
@@ -92,13 +100,17 @@ function App() {
         </div>
 
         <div
-          className={`xl:text-9xl  mmd:text-8xl sm:text-5xl xxs:text-3xl tn:text-xl text-sm z-50 h-32
+          className={`xl:text-9xl mmd:text-8xl sm:text-5xl xxs:text-3xl tn:text-xl text-sm
+           z-50 xl:h-32 lg:h-24 sm:h-12 h-9
           absolute tracking-wider transall font-extrabold overflow-hidden truncate
          xl:top-48 lg:top-28 md:top-[20%] mmd:top-[18%] sm:top-[34%] msm:top-[38%] xxs:top-[27%] tn:top-[25%] top-[46%]
          lg:right-48 md:right-36 mmd:right-20 sm:right-28 msm:right-20 xxs:right-10 tn:right-5 right-3
           `}
         >
-          <Title prtitle={selectedClever.title} />
+          <Title
+            setAnimating={(arg: boolean) => setAnimating(arg)}
+            prtitle={selectedClever.title}
+          />
         </div>
       </div>
       <div className="absolute bottom-10 xxs:left-10 left-1 flex text-left gap-2">

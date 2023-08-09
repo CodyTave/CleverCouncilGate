@@ -3,12 +3,19 @@ import { useEffect, useState } from "react";
 
 interface props {
   prtitle: string;
+  setAnimating: (arg: boolean) => void;
 }
-function Title({ prtitle }: props) {
+function Title({ prtitle, setAnimating }: props) {
   const [prev, setPrev] = useState(prtitle);
   useEffect(() => {
     if (prtitle === "ACADEMY") {
-      const tl = gsap.timeline({ onComplete: () => setPrev(prtitle) });
+      setAnimating(true);
+      const tl = gsap.timeline({
+        onComplete: () => {
+          setPrev(prtitle);
+          setAnimating(false);
+        },
+      });
       if (prev === "COM & EVENTS") {
         tl.to(".com", {
           duration: 0.8,
@@ -41,7 +48,14 @@ function Title({ prtitle }: props) {
         textShadow: "8px 8px 8px rgba(0, 0, 0, 0.2)",
       });
     } else if (prtitle === "COM & EVENTS") {
-      const tl = gsap.timeline({ onComplete: () => setPrev(prtitle) });
+      setAnimating(true);
+
+      const tl = gsap.timeline({
+        onComplete: () => {
+          setPrev(prtitle);
+          setAnimating(false);
+        },
+      });
       if (prev === "ACADEMY") {
         tl.to(".aca", {
           duration: 0.8,
@@ -76,7 +90,13 @@ function Title({ prtitle }: props) {
         textShadow: "8px 8px 8px rgba(0, 0, 0, 0.2)",
       });
     } else if (prtitle === "TECH SERVICES") {
-      const tl = gsap.timeline({ onComplete: () => setPrev(prtitle) });
+      setAnimating(true);
+      const tl = gsap.timeline({
+        onComplete: () => {
+          setPrev(prtitle);
+          setAnimating(false);
+        },
+      });
       if (prev === "ACADEMY") {
         tl.to(".aca", {
           duration: 0.8,

@@ -36,10 +36,26 @@ export const Clevers = [
     color: "bg-com-0",
     svg: "#C6A180",
     links: [
-      { id: "ws", title: "VISITER", url: "" },
-      { id: "fb", title: "FACEBOOK", url: "" },
-      { id: "ig", title: "INSTAGRAM", url: "" },
-      { id: "ln", title: "LINKEDIN", url: "" },
+      {
+        id: "ws",
+        title: "VISITER",
+        url: "https://clevercouncil.com/com-events",
+      },
+      {
+        id: "fb",
+        title: "FACEBOOK",
+        url: "https://www.facebook.com/clevercouncil",
+      },
+      {
+        id: "ig",
+        title: "INSTAGRAM",
+        url: "https://www.instagram.com/clevercomandevents/",
+      },
+      {
+        id: "ln",
+        title: "LINKEDIN",
+        url: "https://www.linkedin.com/company/clevercouncil/",
+      },
     ],
   },
   {
@@ -56,10 +72,22 @@ export const Clevers = [
     color: "bg-aca-1",
     svg: "#109CD7",
     links: [
-      { id: "ws", title: "VISITER", url: "" },
-      { id: "fb", title: "FACEBOOK", url: "" },
-      { id: "ig", title: "INSTAGRAM", url: "" },
-      { id: "ln", title: "LINKEDIN", url: "" },
+      { id: "ws", title: "VISITER", url: "https://clevercouncil.com/academy" },
+      {
+        id: "fb",
+        title: "FACEBOOK",
+        url: "https://www.facebook.com/clevercouncil",
+      },
+      {
+        id: "ig",
+        title: "INSTAGRAM",
+        url: "https://www.instagram.com/cleveracademy__/",
+      },
+      {
+        id: "ln",
+        title: "LINKEDIN",
+        url: "https://www.linkedin.com/company/clevercouncil/",
+      },
     ],
   },
   {
@@ -75,10 +103,26 @@ export const Clevers = [
     color: "bg-tech-1",
     svg: "#B02D6E",
     links: [
-      { id: "ws", title: "VISITER", url: "" },
-      { id: "fb", title: "FACEBOOK", url: "" },
-      { id: "ig", title: "INSTAGRAM", url: "" },
-      { id: "ln", title: "LINKEDIN", url: "" },
+      {
+        id: "ws",
+        title: "VISITER",
+        url: "https://clevercouncil.com/technology",
+      },
+      {
+        id: "fb",
+        title: "FACEBOOK",
+        url: "https://www.facebook.com/clevercouncil",
+      },
+      {
+        id: "ig",
+        title: "INSTAGRAM",
+        url: "https://www.instagram.com/clev.ertechnologyservices/",
+      },
+      {
+        id: "ln",
+        title: "LINKEDIN",
+        url: "https://www.linkedin.com/company/clevercouncil/",
+      },
     ],
   },
 ];
