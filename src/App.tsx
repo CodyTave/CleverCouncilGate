@@ -113,7 +113,7 @@ function App() {
           />
         </div>
       </div>
-      <div className="absolute bottom-10 xxs:left-10 left-1 flex text-left gap-2">
+      <div className="absolute bottom-10 xxs:left-10 left-5 flex text-left gap-2">
         {selectedClever.links.map((link) => (
           <a
             target="__blank"
