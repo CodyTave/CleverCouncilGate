@@ -1,13 +1,28 @@
 import "./App.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Title from "./components/Title";
 import { AnimatePresence, motion } from "framer-motion";
 import { Clevers } from "./constants/constants";
+import { gsap } from "gsap";
 function App() {
   const [selectedClever, setClever] = useState(Clevers[1]);
   const [dragging, setDragging] = useState<boolean>(false);
   const [dragStartX, setDragStartX] = useState<number>(0);
   const [isAnimating, setAnimating] = useState(false);
+
+  useEffect(() => {
+    const tl = gsap.timeline();
+    tl.to(".cleverr", {
+      duration: 0.5,
+      ease: "power2.inOut",
+      letterSpacing: 20,
+    });
+    tl.to(".cleverr", {
+      duration: 2,
+      ease: "power2.inOut",
+      letterSpacing: 10,
+    });
+  }, [selectedClever]);
 
   const handleDragStart = (clientX: number) => {
     if (!isAnimating) {
@@ -45,9 +60,10 @@ function App() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.8, ease: [0.215, 0.61, 0.355, 1] }}
-          className="absolute sm:top-20 sm:left-28 top-10 left-10 w-32 sm:w-36 transall"
+          transition={{ duration: 0.8, ease: "easeInOut" }}
+          className="absolute sm:top-20 sm:left-28 top-10 left-10 w-32 sm:w-36 transall cursor-pointer"
           src={selectedClever.logo}
+          onClick={() => window.open(selectedClever.links[0].url)}
         />
       </AnimatePresence>
       <div className="absolute transall md:right-1/2 sm:top-20  sm:right-28 sm:-translate-x-1/2 top-8 right-10 flex gap-3 items-center ">
@@ -74,12 +90,15 @@ function App() {
             onTouchStart={handleTouchStart}
             onTouchEnd={handleTouchEnd}
             onClick={() => {
-              if (!isAnimating) {
+              if (!isAnimating && clev.id !== selectedClever.id) {
                 setClever(clev);
+              } else if (!isAnimating) {
+                window.open(selectedClever.links[0].url, "_blank");
               }
             }}
             className={`transall  relative w-auto max-w-[60%]
             xs:h-auto h-1/2 object-cover 
+            ${selectedClever.id === clev.id && "cursor-pointer"}
             ${selectedClever.position} ${
               selectedClever.id !== clev.id
                 ? " grayscale blur-[3px] scale-75 hover:blur-0 hover:grayscale-0 "
@@ -90,8 +109,8 @@ function App() {
         ))}
         <div
           className={`
-          font-extrabold transall ${selectedClever.text} absolute tracking-widest
-          xl:text-9xl  mmd:text-8xl sm:text-5xl xxs:text-3xl tn:text-xl text-sm truncate
+          font-extrabold transall ${selectedClever.text} absolute tracking-widest cleverr
+          xl:text-9xl  mmd:text-8xl sm:text-5xl xxs:text-4xl tn:text-xl text-sm truncate
          xl:bottom-48 lg:bottom-28 md:bottom-[20%] mmd:bottom-[18%] sm:bottom-[34%] msm:bottom-[38%] xxs:bottom-[27%] tn:bottom-[25%] bottom-[46%]
          xl:left-60 lg:left-48 md:left-36 mmd:left-24 sm:left-20 msm:left-20 xxs:left-10 tn:left-10 left-3
             `}
@@ -100,8 +119,8 @@ function App() {
         </div>
 
         <div
-          className={`xl:text-9xl mmd:text-8xl sm:text-5xl xxs:text-3xl tn:text-xl text-sm
-           z-50 xl:h-32 lg:h-24 sm:h-12 h-9
+          className={`xl:text-9xl mmd:text-8xl sm:text-5xl xxs:text-4xl tn:text-xl text-sm
+           z-50 xl:h-32 lg:h-24 mmd:h-24 md: sm:h-12 h-9
           absolute tracking-wider transall font-extrabold overflow-hidden truncate
          xl:top-48 lg:top-28 md:top-[20%] mmd:top-[18%] sm:top-[34%] msm:top-[38%] xxs:top-[27%] tn:top-[25%] top-[46%]
          lg:right-48 md:right-36 mmd:right-20 sm:right-28 msm:right-20 xxs:right-10 tn:right-5 right-3

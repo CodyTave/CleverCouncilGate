@@ -18,8 +18,8 @@ function Title({ prtitle, setAnimating }: props) {
       });
       if (prev === "COM & EVENTS") {
         tl.to(".com", {
-          duration: 0.8,
-          ease: "cubic-bezier(0.215, 0.61, 0.355, 1)",
+          duration: 0.5,
+          ease: "Power4.easeOut",
           y: "-100%",
           textShadow: "0px 0px 0px rgba(0, 0, 0, 0.2)",
         });
@@ -30,8 +30,8 @@ function Title({ prtitle, setAnimating }: props) {
         });
       } else {
         tl.to(".tech", {
-          duration: 0.8,
-          ease: "cubic-bezier(0.215, 0.61, 0.355, 1)",
+          duration: 0.5,
+          ease: "easeInOuteaseOut",
           y: "-300%",
           textShadow: "0px 0px 0px rgba(0, 0, 0, 0.2)",
         });
@@ -42,8 +42,8 @@ function Title({ prtitle, setAnimating }: props) {
         });
       }
       tl.to(".aca", {
-        duration: 0.8,
-        ease: "cubic-bezier(0.215, 0.61, 0.355, 1)",
+        duration: 0.5,
+        ease: "easeInOuteaseOut",
         y: "-100%",
         textShadow: "8px 8px 8px rgba(0, 0, 0, 0.2)",
       });
@@ -58,7 +58,7 @@ function Title({ prtitle, setAnimating }: props) {
       });
       if (prev === "ACADEMY") {
         tl.to(".aca", {
-          duration: 0.8,
+          duration: 0.5,
           ease: "cubic-bezier(0.215, 0.61, 0.355, 1)",
           textShadow: "0px 0px 0px rgba(0, 0, 0, 0.2)",
 
@@ -71,7 +71,7 @@ function Title({ prtitle, setAnimating }: props) {
         });
       } else {
         tl.to(".tech", {
-          duration: 0.8,
+          duration: 0.5,
           ease: "cubic-bezier(0.215, 0.61, 0.355, 1)",
           textShadow: "0px 0px 0px rgba(0, 0, 0, 0.2)",
 
@@ -84,7 +84,7 @@ function Title({ prtitle, setAnimating }: props) {
         });
       }
       tl.to(".com", {
-        duration: 0.8,
+        duration: 0.5,
         ease: "cubic-bezier(0.215, 0.61, 0.355, 1)",
         y: "0%",
         textShadow: "8px 8px 8px rgba(0, 0, 0, 0.2)",
