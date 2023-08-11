@@ -4,6 +4,7 @@ import Title from "./components/Title";
 import { AnimatePresence, motion } from "framer-motion";
 import { Clevers } from "./constants/constants";
 import { gsap } from "gsap";
+import { isMobile } from "./constants/functions";
 function App() {
   const [selectedClever, setClever] = useState(Clevers[1]);
   const [dragging, setDragging] = useState<boolean>(false);
@@ -13,14 +14,14 @@ function App() {
   useEffect(() => {
     const tl = gsap.timeline();
     tl.to(".cleverr", {
-      duration: 0.5,
+      duration: 0.1,
       ease: "power2.inOut",
-      letterSpacing: 20,
+      letterSpacing: isMobile() ? 5 : 10,
     });
     tl.to(".cleverr", {
-      duration: 2,
+      duration: 1,
       ease: "power2.inOut",
-      letterSpacing: 10,
+      letterSpacing: 5,
     });
   }, [selectedClever]);
 
@@ -52,6 +53,7 @@ function App() {
   const handleTouchEnd = (e: React.TouchEvent<HTMLDivElement>) => {
     handleDragEnd(e.changedTouches[0].clientX);
   };
+
   return (
     <div className={`w-screen h-screen ${selectedClever.bg} transall`}>
       <AnimatePresence>
@@ -109,21 +111,23 @@ function App() {
         ))}
         <div
           className={`
-          font-extrabold transall ${selectedClever.text} absolute tracking-widest cleverr
+          font-extrabold transall ${selectedClever.text} absolute cleverr tracking-wide cleverWidth
           xl:text-9xl  mmd:text-8xl sm:text-5xl xxs:text-4xl tn:text-xl text-sm truncate
-         xl:bottom-48 lg:bottom-28 md:bottom-[20%] mmd:bottom-[18%] sm:bottom-[34%] msm:bottom-[38%] xxs:bottom-[27%] tn:bottom-[25%] bottom-[46%]
-         xl:left-60 lg:left-48 md:left-36 mmd:left-24 sm:left-20 msm:left-20 xxs:left-10 tn:left-10 left-3
+         xl:bottom-48 lg:bottom-28 md:bottom-[20%] mmd:bottom-[18%] sm:bottom-[34%] msm:bottom-[36%] xs:bottom-[36%] bottom-28
+         xl:left-60 lg:left-48 md:left-36 mmd:left-24 sm:left-20 msm:left-20 
+        xs:block hidden
+        
             `}
         >
           CLEVER
         </div>
 
         <div
-          className={`xl:text-9xl mmd:text-8xl sm:text-5xl xxs:text-4xl tn:text-xl text-sm
-           z-50 xl:h-32 lg:h-24 mmd:h-24 md: sm:h-12 h-9
+          className={`xl:text-9xl mmd:text-7xl sm:text-5xl xxs:text-4xl tn:text-3xl text-sm
+           z-50 xl:h-64 lg:h-48 mmd:h-48 md: sm:h-24 h-18
           absolute tracking-wider transall font-extrabold overflow-hidden truncate
-         xl:top-48 lg:top-28 md:top-[20%] mmd:top-[18%] sm:top-[34%] msm:top-[38%] xxs:top-[27%] tn:top-[25%] top-[46%]
-         lg:right-48 md:right-36 mmd:right-20 sm:right-28 msm:right-20 xxs:right-10 tn:right-5 right-3
+         xl:top-48 lg:top-28 md:top-[20%] mmd:top-[18%] sm:top-[34%] msm:top-[36%] xs:top-[36%] top-28
+         lg:right-48 md:right-36 mmd:right-20 sm:right-28 msm:right-20 
           `}
         >
           <Title
